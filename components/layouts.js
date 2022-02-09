@@ -8,7 +8,7 @@ import styles from './layout.module.css';
 import utilityStyles from '../styles/utils.module.css';
 
 const name = 'Barry'
-export const siteTitle = 'Next.js Blog Template'
+export const siteTitle = 'Next.js Blog Boilerplate'
 
 export default function Layout({ children, home })
 {
