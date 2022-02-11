@@ -1,21 +1,32 @@
+// Styles imports
+import utilityStyles from '../../styles/utils.module.css'
+
+// Explicit Next component imports
+import Head from 'next/head'
+
 // Implicit component imports
-import Layout from "../../components/layouts";
+import Layout from '../../components/layouts'
+import Date from '../../components/Date'
 
 // Post id data imports
-import { getAllPostsIds, getPostData } from "../../lib/posts";
+import { getAllPostsIds, getPostData } from '../../lib/posts'
 
 export default function Post({ postData })
 {
     return (
         <Layout>
-            {postData.title}
-            <br />
-            {postData.id}
-            <br />
-            {postData.date}
-            <br />
-            <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
-        </Layout>
+            <Head>
+                <title>{postData.title}</title>
+            </Head>
+            <article>
+                <h1 className={utilityStyles.headingXl}>{postData.title}</h1>
+                <div className={utilityStyles.lightText}>
+                    <Date dateString={postData.date} />
+                </div>
+                <br />
+                <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+            </article>
+        </Layout >
     )
 }
 

@@ -7,6 +7,12 @@ import utilityStyles from '../styles/utils.module.css';
 // Utility component imports
 import Layout, { siteTitle } from '../components/layouts'
 
+// Explicit component imports
+import Link from 'next/link'
+
+// Implicit component imports
+import Date from '../components/Date'
+
 // Blog post data imports
 import { getSortedPostsData } from '../lib/posts'
 
@@ -36,11 +42,13 @@ export default function Home({ allPostsData })
         <ul className={utilityStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
             <li className={utilityStyles.listItem} key={id}>
-              {title}
+              <Link href={`/posts/${ id }`} >
+                {title}
+              </Link>
               <br />
-              {id}
-              <br />
-              {date}
+              <small className={utilityStyles.lightText}>
+                <Date dateString={date} />
+              </small>
             </li>
           ))}
         </ul>
